@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
@@ -13,13 +11,14 @@ repositories {
 }
 
 dependencies {
+    testImplementation(libs.junitJupiter)
+    testRuntimeOnly(libs.junitPlatformLauncher)
     testImplementation(libs.kotestAssertions)
 }
 
-testing.suites {
-    val test by getting(JvmTestSuite::class) {
-        useKotlinTest(libs.versions.kotlin)
-    }
+tasks.test {
+    useJUnitPlatform()
+    reports.junitXml.required = false
 }
 
 // set Java version

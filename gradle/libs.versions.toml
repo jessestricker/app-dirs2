@@ -1,9 +1,12 @@
 [versions]
 java = "17"
+junit = "5.10.2"
 kotest = "5.9.1"
 kotlin = "2.0.0"
 
 [libraries]
+junitJupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+junitPlatformLauncher = { module = "org.junit.platform:junit-platform-launcher" }
 kotestAssertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 
 [plugins]

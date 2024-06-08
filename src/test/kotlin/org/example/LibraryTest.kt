@@ -1,7 +1,7 @@
 package org.example
 
 import io.kotest.matchers.shouldBe
-import kotlin.test.Test
+import org.junit.jupiter.api.Test
 
 class LibraryTest {
     @Test
