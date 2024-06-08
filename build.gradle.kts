@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 plugins {
     alias(libs.plugins.kotlin)
     `java-library`
+
+    alias(libs.plugins.kover)
 }
 
 repositories {
