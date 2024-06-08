@@ -28,7 +28,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: test-report
-          path: /build/reports/tests/test
+          path: ./build/reports/tests/test
 
       - name: Generate coverage report
         run: ./gradlew koverHtmlReport
@@ -38,4 +38,4 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: coverage-report
-          path: /build/reports/kover/html
+          path: ./build/reports/kover/html
