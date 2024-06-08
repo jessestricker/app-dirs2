@@ -1,4 +1,4 @@
-name: Check
+name: Checks
 
 on:
   push:
@@ -25,17 +25,17 @@ jobs:
       - name: Build
         run: ./gradlew build
 
-      - name: Upload test report
+      - name: Upload Test Report
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: test-report
           path: ./build/reports/tests/test
 
-      - name: Generate coverage report
+      - name: Generate Coverage Report
         run: ./gradlew koverHtmlReport
 
-      - name: Upload coverage report
+      - name: Upload Coverage Report
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
