@@ -1,0 +1,10 @@
+[versions]
+java = "17"
+kotest = "5.9.1"
+kotlin = "2.0.0"
+
+[libraries]
+kotestAssertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
