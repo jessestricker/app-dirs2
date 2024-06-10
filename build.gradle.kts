@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
@@ -5,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin)
     `java-library`
 
+    alias(libs.plugins.detekt)
     alias(libs.plugins.kover)
 }
 
@@ -21,6 +23,12 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
     reports.junitXml.required = false
+}
+
+tasks.withType<Detekt> {
+    basePath = rootProject.projectDir.absolutePath
+    reports.html.required = true
+    reports.sarif.required = true
 }
 
 // set Java version
