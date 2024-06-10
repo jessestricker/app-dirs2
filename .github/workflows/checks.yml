@@ -23,7 +23,7 @@ jobs:
           add-job-summary: never
 
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew build --exclude-task detekt
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
@@ -41,3 +41,37 @@ jobs:
         with:
           name: coverage-report
           path: ./build/reports/kover/html
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          add-job-summary: never
+
+      - name: Lint
+        run: ./gradlew detekt
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: lint-report
+          path: ./build/reports/detekt/detekt.html
+
+      - name: Upload Lint Report to CodeQL
+        uses: github/codeql-action/upload-sarif@v2
+        if: ${{ !cancelled() }}
+        with:
+          sarif_file: ./build/reports/detekt/detekt.sarif
