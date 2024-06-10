@@ -20,6 +20,10 @@ dependencies {
     testImplementation(libs.kotestAssertions)
 }
 
+kotlin {
+    explicitApi()
+}
+
 tasks.test {
     useJUnitPlatform()
     reports.junitXml.required = false
