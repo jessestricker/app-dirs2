@@ -29,6 +29,12 @@ tasks.test {
     reports.junitXml.required = false
 }
 
+kover {
+    reports.filters.excludes.classes(
+        "de.jessestricker.appdirs.SystemConfiguration"
+    )
+}
+
 tasks.withType<Detekt> {
     basePath = rootProject.projectDir.absolutePath
     reports.html.required = true
