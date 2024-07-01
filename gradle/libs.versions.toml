@@ -1,7 +1,7 @@
 [versions]
 detekt = "1.23.6"
 java = "17"
-junit = "5.10.2"
+junit = "5.10.3"
 kotest = "5.9.1"
 kotlin = "2.0.0"
 kover = "0.8.1"
